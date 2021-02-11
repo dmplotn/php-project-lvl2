@@ -1,0 +1,17 @@
+{
+    "name": "hexlet/code",
+    "authors": [
+        {
+            "name": "Dmitry Plotnikov",
+            "email": "dmplotn@gmail.com"
+        }
+    ],
+    "require": {
+        "docopt/docopt": "^1.0"
+    },
+    "autoload": {
+        "files": [
+            "src/Cli.php"
+        ]
+    }
+}
