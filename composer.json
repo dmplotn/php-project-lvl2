@@ -1,5 +1,6 @@
 {
     "name": "hexlet/code",
+    "description": "Generate diff",
     "authors": [
         {
             "name": "Dmitry Plotnikov",
