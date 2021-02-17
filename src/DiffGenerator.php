@@ -15,18 +15,19 @@ function getDiff($data1, $data2)
         $value2 = getValueAsStr($data2[$key] ?? null);
 
         if (!array_key_exists($key, $data1)) {
-            return "  + {$key}: {$value2}";
+            $newValue = "  + {$key}: {$value2}";
+        } elseif (!array_key_exists($key, $data2)) {
+            $newValue = "  - {$key}: {$value1}";
+        } elseif ($value1 === $value2) {
+            $newValue = "    {$key}: {$value1}";
+        } else {
+            $newValue = [
+                "  - {$key}: {$value1}",
+                "  + {$key}: {$value2}"
+            ];
         }
-        if (!array_key_exists($key, $data2)) {
-            return "  - {$key}: {$value1}";
-        }
-        if ($value1 === $value2) {
-            return "    {$key}: {$value1}";
-        }
-        return [
-            "  - {$key}: {$value1}",
-            "  + {$key}: {$value2}"
-        ];
+
+        return $newValue;
     }, $keys);
 
     $inner = implode("\n", flatten($mapped));
