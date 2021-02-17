@@ -16,16 +16,17 @@ function getDiff($data1, $data2)
 
         if (!array_key_exists($key, $data1)) {
             return "  + {$key}: {$value2}";
-        } elseif (!array_key_exists($key, $data2)) {
-            return "  - {$key}: {$value1}";
-        } elseif ($value1 === $value2) {
-            return "    {$key}: {$value1}";
-        } else {
-            return [
-                "  - {$key}: {$value1}",
-                "  + {$key}: {$value2}"
-            ];
         }
+        if (!array_key_exists($key, $data2)) {
+            return "  - {$key}: {$value1}";
+        }
+        if ($value1 === $value2) {
+            return "    {$key}: {$value1}";
+        }
+        return [
+            "  - {$key}: {$value1}",
+            "  + {$key}: {$value2}"
+        ];
     }, $keys);
 
     $inner = implode("\n", flatten($mapped));
