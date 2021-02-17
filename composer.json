@@ -13,7 +13,6 @@
     },
     "autoload": {
         "files": [
-            "src/Cli.php",
             "src/DiffGenerator.php"
         ],
         "psr-4": {
