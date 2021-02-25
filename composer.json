@@ -14,7 +14,8 @@
     },
     "autoload": {
         "files": [
-            "src/DiffGenerator.php"
+            "src/DiffGenerator.php",
+            "src/Parsers.php"
         ],
         "psr-4": {
             "Diff\\Generator\\": "src",

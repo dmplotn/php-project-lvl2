@@ -4,6 +4,7 @@ namespace Diff\Generator\DiffGenerator;
 
 use function Funct\Collection\union;
 use function Funct\Collection\flatten;
+use function Diff\Generator\Parsers\getParser;
 
 function getDiff($data1, $data2)
 {
@@ -35,16 +36,35 @@ function getDiff($data1, $data2)
     return "{\n{$inner}\n}";
 }
 
-function genDiff($filepath1, $filepath2)
+function getParsedData($filepath1, $filepath2)
 {
+    $extName1 = pathinfo($filepath1)['extension'];
+    $extName2 = pathinfo($filepath2)['extension'];
+
+    if ($extName1 !== $extName2) {
+        throw new \Exception("Extension names are different: '{$extName1}' and '{$extName2}'");
+    }
+
     set_error_handler(function ($errno, $errstr) {
         throw new \Exception($errstr);
     });
 
-    $data1 = json_decode(file_get_contents($filepath1), true);
-    $data2 = json_decode(file_get_contents($filepath2), true);
+    $fileContent1 = file_get_contents($filepath1);
+    $fileContent2 = file_get_contents($filepath2);
 
     restore_error_handler();
+
+    $parse = getParser($extName1);
+
+    $data1 = $parse($fileContent1);
+    $data2 = $parse($fileContent2);
+
+    return [$data1, $data2];
+}
+
+function genDiff($filepath1, $filepath2)
+{
+    [$data1, $data2] = getParsedData($filepath1, $filepath2);
 
     return getDiff($data1, $data2);
 }
