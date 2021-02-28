@@ -10,12 +10,16 @@
     "require": {
         "docopt/docopt": "^1.0",
         "funct/funct": "^1.5",
-        "symfony/yaml": "^5.2"
+        "symfony/yaml": "^5.2",
+        "symfony/string": "^5.2"
     },
     "autoload": {
         "files": [
             "src/DiffGenerator.php",
-            "src/Parsers.php"
+            "src/Parsing/ParserSelector.php",
+            "src/Ast.php",
+            "src/Formatting/FormaterSelector.php",
+            "src/Formatting/Formaters/StylishFormater.php"
         ],
         "psr-4": {
             "Diff\\Generator\\": "src",
