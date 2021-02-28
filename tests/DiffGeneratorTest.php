@@ -24,11 +24,11 @@ class DiffGeneratorTest extends \PHPUnit\Framework\TestCase
 
     public function additionProvider()
     {
-        $resultPlain = file_get_contents($this->getFixturePath("resultPlain.txt"));
+        $result = file_get_contents($this->getFixturePath("result.txt"));
 
         return [
-            ['beforePlain.json', 'afterPlain.json', $resultPlain],
-            ['beforePlain.yaml', 'afterPlain.yaml', $resultPlain],
+            ['before.json', 'after.json', $result],
+            ['before.yaml', 'after.yaml', $result],
         ];
     }
 }
