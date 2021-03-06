@@ -2,9 +2,9 @@
 
 namespace Diff\Generator\DiffGenerator;
 
-use function Diff\Generator\Parsing\ParserSelector\getParser;
+use function Diff\Generator\Parsers\getParser;
 use function Diff\Generator\Ast\buildAst;
-use function Diff\Generator\Formatting\FormaterSelector\getFormater;
+use function Diff\Generator\Formaters\getFormater;
 
 function getParsedData($filepath1, $filepath2)
 {

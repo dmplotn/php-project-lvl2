@@ -1,6 +1,6 @@
 <?php
 
-namespace Diff\Generator\Formatting\FormaterSelector;
+namespace Diff\Generator\Formaters;
 
 use function Diff\Generator\Formatting\Formaters\StylishFormater\formatAst;
 

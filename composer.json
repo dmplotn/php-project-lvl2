@@ -16,10 +16,10 @@
     "autoload": {
         "files": [
             "src/DiffGenerator.php",
-            "src/Parsing/ParserSelector.php",
+            "src/Parsers.php",
             "src/Ast.php",
-            "src/Formatting/FormaterSelector.php",
-            "src/Formatting/Formaters/StylishFormater.php"
+            "src/Formaters.php",
+            "src/Formaters/StylishFormater.php"
         ],
         "psr-4": {
             "Diff\\Generator\\": "src",
