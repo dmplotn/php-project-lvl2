@@ -14,21 +14,24 @@ class DiffGeneratorTest extends \PHPUnit\Framework\TestCase
     /**
      * @dataProvider additionProvider
      */
-    public function testGenDiff($beforeFilename, $afterFilename, $expected)
+    public function testGenDiff($beforeFilename, $afterFilename, $formatName, $expected)
     {
         $beforePath = $this->getFixturePath($beforeFilename);
         $afterPath = $this->getFixturePath($afterFilename);
 
-        $this->assertEquals($expected, genDiff($beforePath, $afterPath));
+        $this->assertEquals($expected, genDiff($beforePath, $afterPath, $formatName));
     }
 
     public function additionProvider()
     {
-        $result = file_get_contents($this->getFixturePath("result.txt"));
+        $stylishResult = file_get_contents($this->getFixturePath("stylishResult.txt"));
+        $plainResult = file_get_contents($this->getFixturePath("plainResult.txt"));
 
         return [
-            ['before.json', 'after.json', $result],
-            ['before.yaml', 'after.yaml', $result],
+            ['before.json', 'after.json', 'stylish', $stylishResult],
+            ['before.yaml', 'after.yaml', 'stylish',$stylishResult],
+            ['before.json', 'after.json', 'plain', $plainResult],
+            ['before.yaml', 'after.yaml', 'plain', $plainResult],
         ];
     }
 }
