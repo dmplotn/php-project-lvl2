@@ -67,7 +67,7 @@ function scalarAsStr($value): string
 function assocInnerAsStr(array $arr, int $depth): string
 {
     $keys = array_keys($arr);
-    $parts = array_map(function ($key) use ($arr, $depth) {
+    $parts = array_map(function ($key) use ($arr, $depth): string {
         $indent = str_repeat(' ', 4 * $depth);
         $value = valueAsStr($arr[$key], $depth);
         return "{$indent}    {$key}: {$value}";

@@ -4,7 +4,7 @@ namespace Differ\Parsers;
 
 use Symfony\Component\Yaml\Yaml;
 
-function getParser(string $extName): callable
+function getParser(string $extName)
 {
     $mapping = [
         'json' => fn($data) => json_decode($data, true),
