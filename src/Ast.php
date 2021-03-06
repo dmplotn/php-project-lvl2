@@ -3,11 +3,13 @@
 namespace Differ\Ast;
 
 use function Funct\Collection\union;
+use function Funct\Collection\sortBy;
 
 function buildAst(array $data1, array $data2): array
 {
     $keys = union(array_keys($data1), array_keys($data2));
-    sort($keys);
+    $sortedKeys = array_values(sortBy($keys, fn($key) => $key));
+
     return array_map(function ($key) use ($data1, $data2) {
         if (!array_key_exists($key, $data1)) {
             $node = ['name' => $key, 'type' => 'added', 'afterValue' => $data2[$key]];
@@ -22,5 +24,5 @@ function buildAst(array $data1, array $data2): array
         }
 
         return $node;
-    }, $keys);
+    }, $sortedKeys);
 }
