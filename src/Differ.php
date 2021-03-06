@@ -19,14 +19,8 @@ function getParsedData(string $filepath1, string $filepath2): array
         throw new \Exception("Extension names are different: '{$extName1}' and '{$extName2}'");
     }
 
-    set_error_handler(function ($errno, $errstr) {
-        throw new \Exception($errstr);
-    });
-
     $fileContent1 = file_get_contents($filepath1);
     $fileContent2 = file_get_contents($filepath2);
-
-    restore_error_handler();
 
     $parse = getParser($extName1);
 
