@@ -33,7 +33,8 @@ DOC;
 
 try {
     $diff = genDiff($filepath1, $filepath2, $format);
-    echo "{$diff}\n";
 } catch (\Exception $e) {
     echo "{$e->getMessage()}\n";
 }
+
+echo "{$diff}\n";
