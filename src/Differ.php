@@ -24,10 +24,6 @@ function getParsedData(string $filepath1, string $filepath2): array
 
     $parse = getParser($extName1);
 
-    if ($parse === null) {
-        throw new \Exception("Parser for given file extension({$extName1}) not found.");
-    }
-
     $data1 = $parse($fileContent1);
     $data2 = $parse($fileContent2);
 
