@@ -19,7 +19,8 @@
             "src/Parsers.php",
             "src/Ast.php",
             "src/Formaters.php",
-            "src/Formaters/StylishFormater.php"
+            "src/Formaters/StylishFormater.php",
+            "src/Formaters/PlainFormater.php"
         ],
         "psr-4": {
             "Diff\\Generator\\": "src",
