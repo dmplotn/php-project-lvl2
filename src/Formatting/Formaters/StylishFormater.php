@@ -9,8 +9,8 @@ function formatInner($ast, $depth = 0)
     $parts = array_map(function ($node) use ($depth) {
         $name = $node['name'];
         $type = $node['type'];
-        $beforeValue = stringifyValue($node['beforeValue'] ?? null, $depth);
-        $afterValue = stringifyValue($node['afterValue'] ?? null, $depth);
+        $beforeValue = valueAsStr($node['beforeValue'] ?? null, $depth);
+        $afterValue = valueAsStr($node['afterValue'] ?? null, $depth);
         $children = $node['children'] ?? null;
 
         $indent = str_repeat(' ', 4 * $depth);
@@ -51,7 +51,7 @@ function formatAst($ast)
     return "{\n{$inner}\n}";
 }
 
-function stringifyScalar($value)
+function scalarAsStr($value)
 {
     if (is_null($value)) {
         return 'null';
@@ -64,26 +64,26 @@ function stringifyScalar($value)
     return $value;
 }
 
-function stringifyAssocInner($arr, $depth)
+function assocInnerAsStr($arr, $depth)
 {
     $keys = array_keys($arr);
     $parts = array_map(function ($key) use ($arr, $depth) {
         $indent = str_repeat(' ', 4 * $depth);
-        $value = stringifyValue($arr[$key], $depth);
+        $value = valueAsStr($arr[$key], $depth);
         return "{$indent}    {$key}: {$value}";
     }, $keys);
 
     return implode("\n", $parts);
 }
 
-function stringifyAssoc($arr, $depth)
+function assocAsStr($arr, $depth)
 {
     $indent = str_repeat(' ', 4 * $depth);
-    $inner = stringifyAssocInner($arr, $depth);
+    $inner = assocInnerAsStr($arr, $depth);
     return "{\n{$inner}\n{$indent}}";
 }
 
-function stringifyValue($value, $depth)
+function valueAsStr($value, $depth)
 {
-    return is_array($value) ? stringifyAssoc($value, $depth + 1) : stringifyScalar($value);
+    return is_array($value) ? assocAsStr($value, $depth + 1) : scalarAsStr($value);
 }
