@@ -34,5 +34,8 @@
     "scripts": {
         "phpcs": "phpcs",
         "phpunit": "phpunit"
-    }
+    },
+    "bin": [
+        "bin/gendiff"
+    ]
 }
