@@ -4,7 +4,7 @@ namespace Differ\Formaters\PlainFormater;
 
 use function Funct\Collection\flatten;
 
-function formatAst($ast, $nameParts = [])
+function formatAst(array $ast, array $nameParts = []): string
 {
     $parts = array_map(function ($node) use ($nameParts) {
         $name = $node['name'];
@@ -40,7 +40,7 @@ function formatAst($ast, $nameParts = [])
     return implode("\n", flatten($parts));
 }
 
-function valueAsStr($value)
+function valueAsStr($value): string
 {
     if (is_bool($value)) {
         return $value ? 'true' : 'false';

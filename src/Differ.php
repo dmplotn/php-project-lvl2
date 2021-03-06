@@ -6,7 +6,7 @@ use function Differ\Parsers\getParser;
 use function Differ\Ast\buildAst;
 use function Differ\Formaters\getFormater;
 
-function getParsedData($filepath1, $filepath2)
+function getParsedData(string $filepath1, string $filepath2): array
 {
     $extName1 = pathinfo($filepath1)['extension'];
     $extName2 = pathinfo($filepath2)['extension'];
@@ -36,7 +36,7 @@ function getParsedData($filepath1, $filepath2)
     return [$data1, $data2];
 }
 
-function genDiff($filepath1, $filepath2, $format = 'stylish')
+function genDiff(string $filepath1, string $filepath2, string $format = 'stylish'): string
 {
     [$data1, $data2] = getParsedData($filepath1, $filepath2);
     $formatAst = getFormater($format);

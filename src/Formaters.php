@@ -5,7 +5,7 @@ namespace Differ\Formaters;
 use function Differ\Formaters\StylishFormater\formatAst as stylishFormatAst;
 use function Differ\Formaters\PlainFormater\formatAst as plainFormatAst;
 
-function getFormater($format)
+function getFormater(string $format): callable
 {
     $mapping = [
         'stylish' => fn($ast) => stylishFormatAst($ast),

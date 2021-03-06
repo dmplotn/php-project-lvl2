@@ -4,7 +4,7 @@ namespace Differ\Ast;
 
 use function Funct\Collection\union;
 
-function buildAst($data1, $data2)
+function buildAst(array $data1, array $data2): array
 {
     $keys = union(array_keys($data1), array_keys($data2));
     sort($keys);

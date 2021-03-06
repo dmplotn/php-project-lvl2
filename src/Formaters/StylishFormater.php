@@ -4,7 +4,7 @@ namespace Differ\Formaters\StylishFormater;
 
 use function Funct\Collection\flatten;
 
-function formatInner($ast, $depth = 0)
+function formatInner(array $ast, int $depth = 0): string
 {
     $parts = array_map(function ($node) use ($depth) {
         $name = $node['name'];
@@ -45,13 +45,13 @@ function formatInner($ast, $depth = 0)
     return implode("\n", flatten($parts));
 }
 
-function formatAst($ast)
+function formatAst(array $ast): string
 {
     $inner = formatInner($ast);
     return "{\n{$inner}\n}";
 }
 
-function scalarAsStr($value)
+function scalarAsStr($value): string
 {
     if (is_null($value)) {
         return 'null';
@@ -61,10 +61,10 @@ function scalarAsStr($value)
         return $value ? 'true' : 'false';
     }
 
-    return $value;
+    return (string) $value;
 }
 
-function assocInnerAsStr($arr, $depth)
+function assocInnerAsStr(array $arr, int $depth): string
 {
     $keys = array_keys($arr);
     $parts = array_map(function ($key) use ($arr, $depth) {
@@ -76,14 +76,14 @@ function assocInnerAsStr($arr, $depth)
     return implode("\n", $parts);
 }
 
-function assocAsStr($arr, $depth)
+function assocAsStr(array $arr, int $depth): string
 {
     $indent = str_repeat(' ', 4 * $depth);
     $inner = assocInnerAsStr($arr, $depth);
     return "{\n{$inner}\n{$indent}}";
 }
 
-function valueAsStr($value, $depth)
+function valueAsStr($value, int $depth): string
 {
     return is_array($value) ? assocAsStr($value, $depth + 1) : scalarAsStr($value);
 }
