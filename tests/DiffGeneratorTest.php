@@ -26,12 +26,15 @@ class DiffGeneratorTest extends \PHPUnit\Framework\TestCase
     {
         $stylishResult = file_get_contents($this->getFixturePath("stylishResult.txt"));
         $plainResult = file_get_contents($this->getFixturePath("plainResult.txt"));
+        $jsonResult = file_get_contents($this->getFixturePath("jsonResult.txt"));
 
         return [
             ['before.json', 'after.json', 'stylish', $stylishResult],
             ['before.yaml', 'after.yaml', 'stylish',$stylishResult],
             ['before.json', 'after.json', 'plain', $plainResult],
             ['before.yaml', 'after.yaml', 'plain', $plainResult],
+            ['before.json', 'after.json', 'json', $jsonResult],
+            ['before.yaml', 'after.yaml', 'json', $jsonResult],
         ];
     }
 }
