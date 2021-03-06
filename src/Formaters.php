@@ -1,9 +1,9 @@
 <?php
 
-namespace Diff\Generator\Formaters;
+namespace Differ\Formaters;
 
-use function Diff\Generator\Formatting\Formaters\StylishFormater\formatAst as stylishFormatAst;
-use function Diff\Generator\Formatting\Formaters\PlainFormater\formatAst as plainFormatAst;
+use function Differ\Formaters\StylishFormater\formatAst as stylishFormatAst;
+use function Differ\Formaters\PlainFormater\formatAst as plainFormatAst;
 
 function getFormater($format)
 {

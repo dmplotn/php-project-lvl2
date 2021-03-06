@@ -15,7 +15,7 @@
     },
     "autoload": {
         "files": [
-            "src/DiffGenerator.php",
+            "src/Differ.php",
             "src/Parsers.php",
             "src/Ast.php",
             "src/Formaters.php",
@@ -23,8 +23,8 @@
             "src/Formaters/PlainFormater.php"
         ],
         "psr-4": {
-            "Diff\\Generator\\": "src",
-            "Diff\\Generator\\Tests\\": "tests"
+            "Differ\\": "src",
+            "Differ\\Tests\\": "tests"
         }
     },
     "require-dev": {

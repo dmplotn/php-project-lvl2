@@ -1,10 +1,10 @@
 <?php
 
-namespace Diff\Generator\DiffGenerator;
+namespace Differ\Differ;
 
-use function Diff\Generator\Parsers\getParser;
-use function Diff\Generator\Ast\buildAst;
-use function Diff\Generator\Formaters\getFormater;
+use function Differ\Parsers\getParser;
+use function Differ\Ast\buildAst;
+use function Differ\Formaters\getFormater;
 
 function getParsedData($filepath1, $filepath2)
 {

@@ -1,10 +1,10 @@
 <?php
 
-namespace Diff\Generator\Tests;
+namespace Differ\Tests;
 
-use function Diff\Generator\DiffGenerator\genDiff;
+use function Differ\Differ\genDiff;
 
-class DiffGeneratorTest extends \PHPUnit\Framework\TestCase
+class DifferTest extends \PHPUnit\Framework\TestCase
 {
     private function getFixturePath($filename)
     {

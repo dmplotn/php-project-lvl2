@@ -1,6 +1,6 @@
 <?php
 
-namespace Diff\Generator\Formatting\Formaters\PlainFormater;
+namespace Differ\Formaters\PlainFormater;
 
 use function Funct\Collection\flatten;
 
