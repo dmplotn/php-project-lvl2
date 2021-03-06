@@ -8,8 +8,12 @@ use function Differ\Formaters\getFormater;
 
 function getParsedData(string $filepath1, string $filepath2): array
 {
-    $extName1 = pathinfo($filepath1)['extension'];
-    $extName2 = pathinfo($filepath2)['extension'];
+    $extName1 = pathinfo($filepath1)['extension'] ?? null;
+    $extName2 = pathinfo($filepath2)['extension'] ?? null;
+
+    if ($extName1 === null || $extName2 === null) {
+        throw new \Exception('Filename must be contain an extension');
+    }
 
     if ($extName1 !== $extName2) {
         throw new \Exception("Extension names are different: '{$extName1}' and '{$extName2}'");
