@@ -9,7 +9,8 @@ function getFormater($format)
 {
     $mapping = [
         'stylish' => fn($ast) => stylishFormatAst($ast),
-        'plain' => fn($ast) => plainFormatAst($ast)
+        'plain' => fn($ast) => plainFormatAst($ast),
+        'json' => fn($ast) => json_encode($ast),
     ];
 
     return $mapping[$format] ?? $mapping['stylish'];
